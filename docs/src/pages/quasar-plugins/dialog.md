@@ -158,7 +158,7 @@ const props = defineProps({
   // ...your custom props
 })
 
-defineEmits([
+const emit = defineEmits([
   // REQUIRED; need to specify some events that your
   // component will emit through useDialogPluginComponent()
   ...useDialogPluginComponent.emits
@@ -174,6 +174,8 @@ const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginC
 
 // this is part of our example (so not required)
 function onOKClick () {
+  // makes sure the markup is fully removed from DOM
+  emit('hide')
   // on OK, it is REQUIRED to
   // call onDialogOK (with optional payload)
   onDialogOK()
